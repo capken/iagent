@@ -30,7 +30,18 @@ angular.module('iagent', ['ionic', 'iagent.controllers'])
     url: "/search",
     views: {
       'mainContent': {
-        templateUrl: "templates/search.html"
+        templateUrl: "templates/search.html",
+        controller: 'SearchCtrl'
+      }
+    }
+  })
+
+  .state('profile', {
+    url: "/profile",
+    views: {
+      'mainContent': {
+        templateUrl: "templates/profile.html",
+        controller: 'ProfileCtrl'
       }
     }
   })
@@ -39,7 +50,8 @@ angular.module('iagent', ['ionic', 'iagent.controllers'])
     url: "/products",
     views: {
       'mainContent': {
-        templateUrl: "templates/products.html"
+        templateUrl: "templates/products.html",
+        controller: 'ProductsCtrl'
       }
     }
   });

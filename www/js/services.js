@@ -1,22 +1,44 @@
-angular.module('starter.services', [])
+angular.module('iagent.services', [])
 
-.factory('Friends', function() {
+.factory('Users', function() {
 
   // Some fake testing data
   var users = [
-    { id: 0, name: 'Scruff McGruff' },
-    { id: 1, name: 'G.I. Joe' },
-    { id: 2, name: 'Miss Frizzle' },
-    { id: 3, name: 'Ash Ketchum' }
+    { 
+      name: 'Allen Zheng',
+      cellPhone: '15900816497',
+      email: 'capken@gmail.com',
+      licensePlates: '沪A6U615',
+      avatar: 'allen.jpeg'
+    },
+    { 
+      name: 'Steve Jobs',
+      cellPhone: '18900816498',
+      email: 'steven@apple.com',
+      licensePlates: '沪A66666',
+      avatar: 'steve.jpeg'
+    },
+    { 
+      name: 'Tim Cooks',
+      cellPhone: '18600816398',
+      email: 'tim@apple.com',
+      licensePlates: '沪A88888',
+      avatar: 'tim.jpeg'
+    }
   ];
 
   return {
     all: function() {
-      return friends;
+      return users;
     },
-    get: function(friendId) {
-      // Simple index lookup
-      return friends[friendId];
+    get: function(userName) {
+      for(var i = 0; i < users.length; i++) {
+        if(userName === users[i].name) {
+          return users[i];
+        }
+      } 
+
+      return null;
     }
   }
 });

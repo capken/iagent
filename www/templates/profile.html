@@ -1,0 +1,19 @@
+<ion-view title="Search Result">
+  <ion-content>
+    <div class="list card" ng-show="userProfile">
+      <div class="item item-avatar">
+        <img ng-src="img/{{userProfile.avatar}}">
+        <h2>{{userProfile.name}}</h2>
+        <p>33 years old</p>
+      </div>
+      <div class="item item-body">
+        <p>Lives in Shanghai China</p>
+      </div>
+    </div>
+    <div class="list card" ng-show="userNotFound">
+      <div class="item item-body text-center">
+        <strong>User Not Found</strong>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
