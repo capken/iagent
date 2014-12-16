@@ -1,0 +1,25 @@
+<ion-view title="Search">
+  <ion-content has-header="true">
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="Allen Zheng" ng-model="userInfo.name">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Cell Phone</span>
+        <input type="text" placeholder="15900816497" ng-model="userInfo.phone">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Email</span>
+        <input type="email" placeholder="capken@gmail.com" ng-model="userInfo.email">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">License Plates</span>
+        <input type="text" placeholder="沪A6U615" ng-model="userInfo.plates">
+      </label>
+      <label class="item">
+        <button class="button button-block button-positive" ng-click="query()">Query</button>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>
