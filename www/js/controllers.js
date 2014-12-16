@@ -1,7 +1,9 @@
 angular.module('iagent.controllers', ['iagent.services'])
 
 .controller('MainCtrl', function($scope, $stateParams) {
-  $scope.userInfo = {};
+  $scope.userInfo = {
+    name: 'Allen Zheng'
+  };
 })
 
 .controller('HomeCtrl', function($scope, $stateParams) {

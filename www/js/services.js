@@ -6,8 +6,8 @@ angular.module('iagent.services', [])
   var users = [
     { 
       name: 'Allen Zheng',
-      cellPhone: '15900816497',
-      email: 'capken@gmail.com',
+      cellPhone: '13912345678',
+      email: 'allen.zheng@ebaotech.com',
       licensePlates: '沪A6U615',
       avatar: 'allen.jpeg'
     },
