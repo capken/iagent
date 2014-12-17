@@ -14,47 +14,33 @@ angular.module('iagent', ['ionic', 'iagent.controllers'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise('/');
+
   $stateProvider
 
   .state('home', {
-    url: "/home",
-    views: {
-      'mainContent': {
-        templateUrl: "templates/home.html",
-        controller: 'HomeCtrl'
-      }
-    }
+    url: "/",
+    templateUrl: "templates/home.html",
+    controller: 'HomeCtrl'
   })
 
   .state('search', {
     url: "/search",
-    views: {
-      'mainContent': {
-        templateUrl: "templates/search.html",
-        controller: 'SearchCtrl'
-      }
-    }
+    templateUrl: "templates/search.html",
+    controller: 'SearchCtrl'
   })
 
   .state('profile', {
-    url: "/profile",
-    views: {
-      'mainContent': {
-        templateUrl: "templates/profile.html",
-        controller: 'ProfileCtrl'
-      }
-    }
+    url: "/search/profile",
+    templateUrl: "templates/profile.html",
+    controller: 'ProfileCtrl'
   })
 
   .state('products', {
     url: "/products",
-    views: {
-      'mainContent': {
-        templateUrl: "templates/products.html",
-        controller: 'ProductsCtrl'
-      }
-    }
+    templateUrl: "templates/products.html",
+    controller: 'ProductsCtrl'
   });
 
-  $urlRouterProvider.otherwise('/home');
 });
