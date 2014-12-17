@@ -1,1 +1,21 @@
 /* Empty. Add your own CSS if you like */
+
+.profile-item label {
+}
+
+.profile-item span {
+  float: right;
+}
+
+#name {
+  font-weight: bold
+}
+
+#occupation, #location {
+  font-size: 12px;
+}
+
+#avatar {
+  border-radius: 5px;
+}
+

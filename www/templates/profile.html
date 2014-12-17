@@ -1,19 +1,31 @@
-<ion-view title="Search Result">
+<ion-view title="User Information">
   <ion-content>
     <div class="list card" ng-show="userProfile">
-      <div class="item item-avatar">
-        <img ng-src="img/{{userProfile.avatar}}">
-        <h2>{{userProfile.name}}</h2>
-        <p><strong>33</strong> years old</p>
-        <p>Lives in <strong>Shanghai</strong></p>
+      <div class="item text-center">
+        <img id="avatar" ng-src="img/allen.jpeg">
+        <div id="name">Allen Zheng</div>
+        <div id="occupation">Software Engineer</div>
+        <div id="location"><i class="ion-location"></i> Shanghai</div>
       </div>
-      <div class="item item-body">
-        <p>
-          He is a <strong>software enginneer</strong>,
-          and has <strong>3</strong> years driving experience.
-          He mainly drives in <strong>Shanghai</strong> and drives about <strong>20</strong> KM every day.
-          During the past year, he broke traffic rules for <strong>1</strong> time(s).
-        </p>
+      <div class="item profile-item">
+        <label>Age</label>
+        <span><strong>33</strong></span>
+      </div>
+      <div class="item profile-item">
+        <label>Car Purchase Price</label>
+        <span><strong>145,000</strong> yuan</span>
+      </div>
+      <div class="item profile-item">
+        <label>Driving Experience</label>
+        <span><strong>3</strong> years</span>
+      </div>
+      <div class="item profile-item">
+        <label>Avg. Daily Mileage</label>
+        <span><strong>20</strong> km</span>
+      </div>
+      <div class="item profile-item">
+        <label>Traffic Violations (2014)</label>
+        <span><strong>2</strong> times</span>
       </div>
     </div>
     <div class="list card" ng-show="userNotFound">
