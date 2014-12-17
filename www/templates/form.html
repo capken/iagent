@@ -1,0 +1,19 @@
+<ion-view title="{{title}}">
+  <ion-content has-header="true">
+    <div class="list">
+
+      <label class="item item-input item-stacked-label" ng-repeat="field in form.fields">
+        <span class="input-label">{{field.label}}</span>
+        <input type="{{field.type}}" ng-model="form.values[field.attr]">
+      </label>
+
+      <label class="item">
+        <button class="button button-block button-positive" ui-sref="{{form.action.target}}">
+          <i ng-show="form.action.icon" class="icon {{form.action.icon}}"></i>
+          <span ng-show="form.action.label">{{form.action.label}}</span>
+        </button>
+      </label>
+
+    </div>
+  </ion-content>
+</ion-view>

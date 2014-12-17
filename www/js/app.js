@@ -27,7 +27,7 @@ angular.module('iagent', ['ionic', 'iagent.controllers'])
 
   .state('search', {
     url: "/search",
-    templateUrl: "templates/search.html",
+    templateUrl: "templates/form.html",
     controller: 'SearchCtrl'
   })
 
@@ -41,6 +41,18 @@ angular.module('iagent', ['ionic', 'iagent.controllers'])
     url: "/products",
     templateUrl: "templates/products.html",
     controller: 'ProductsCtrl'
+  })
+
+  .state('product_form', {
+    url: "/products/:id/form",
+    templateUrl: "templates/form.html",
+    controller: 'ProductCtrl'
+  })
+
+  .state('summary', {
+    url: "/products/:id/summary",
+    templateUrl: "templates/summary.html",
+    controller: 'ProductCtrl'
   });
 
 });
