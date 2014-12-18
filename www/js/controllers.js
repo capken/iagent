@@ -48,6 +48,28 @@ angular.module('iagent.controllers', ['iagent.services'])
   }, 1500);
 })
 
+.controller('ProductCtrl', function($scope, $state, $stateParams) {
+  if($state.is('product_form')) {
+    $scope.title = 'Policy Form';
+  
+    $scope.form.reset();
+ 
+    $scope.form.fields = [
+      { label: 'Name', attr: 'name', type: 'text' },
+      { label: 'Cell Phone', attr: 'phone', type: 'text' },
+      { label: 'Email', attr: 'email', type: 'email' },
+      { label: 'License Plates', attr: 'plates', type: 'text' },
+      { label: 'Start Date', attr: 'sdate', type: 'date' }
+    ];
+ 
+    $scope.form.action.target = 'summary';
+    $scope.form.action.label = 'Next';
+ 
+  } else if($state.is('summary')) {
+  
+  }
+})
+
 .controller('ProductsCtrl', function($scope, $stateParams) {
   $scope.groups = [];
   $scope.selectProduct;
