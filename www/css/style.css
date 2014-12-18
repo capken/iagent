@@ -7,6 +7,19 @@
   float: right;
 }
 
+.profile-item .row, .profile-item .col{
+  padding: 0px;
+}
+
+p.limit {
+  font-size: 80%;
+  font-style: italic;
+}
+
+p.uw-alert {
+  color: red;
+}
+
 #name {
   font-weight: bold
 }
