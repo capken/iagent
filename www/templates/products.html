@@ -1,4 +1,28 @@
-<ion-view title="Products">
-  <ion-content>
-  </ion-content>
+<ion-view title="选择产品">
+	<ion-content has-header="true">
+		<div>
+			<ion-list>
+				<div ng-repeat="group in groups">
+					<div style="position: relative;">
+						<label class="item item-radio" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+						    <input type="radio" name="group">
+						    <div class="item-content">
+						      {{group.name}}
+						    </div>
+						    <i class="radio-icon ion-checkmark"></i>
+						  </label>
+						<ion-item class="item-accordion" style="padding-top: 10px;padding-bottom: 10px;"
+						ng-repeat="item in group.items"
+						ng-show="isGroupShown(group)">
+							{{item}}
+						</ion-item>
+					</div>
+			</ion-list>
+		</div>
+		<div>
+			<a class="footer button button-full button-positive" ui-sref="coverage">
+	        	下一步
+	        </a>
+		</div>
+	</ion-content>
 </ion-view>

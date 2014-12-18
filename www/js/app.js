@@ -24,6 +24,12 @@ angular.module('iagent', ['ionic', 'iagent.controllers'])
     templateUrl: "templates/home.html",
     controller: 'HomeCtrl'
   })
+  
+  .state('coverage', {
+    url: "/coverage",
+    templateUrl: "templates/coverage.html",
+    controller: 'CoverageCtrl'
+  })
 
   .state('search', {
     url: "/search",
