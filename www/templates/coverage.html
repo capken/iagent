@@ -1,30 +1,34 @@
-<ion-view title="选择险种">
-	<ion-content has-header="true">
-		<form class="form-horizontal" role="form">
-			<ion-list>
-				<div ng-repeat="group in coverage.groups">
-					<div class="card">
-					  <div class="item item-divider">
-					    {{group.name}}
-					  </div>
-					  <div class="item item-text-wrap">
-					    {{group.desc}}
-					  </div>
-					  <div class="item">
-					  	<label class="item item-select">
-						    <select ng-change="selectChanged(group)" ng-options="g as ('保额:' + g.value) for g in group.liability track by g.value" ng-model="group.hasSelected">
-						    	<option value="">不购买此项</option>
-						    </select>
-						  </label>
-					  </div>
-					</div>
-				</div>
-			</ion-list>
-			<div class="padding">
-				<a ng-click="next()" class="footer button button-block button-positive">
-		        	下一步
-		        </a>
-			</div>
-		</form>
-	</ion-content>
+<ion-view title="{{form.product.name}}">
+  <ion-content has-header="true">
+    <form class="form-horizontal" role="form">
+      <ion-list>
+        <div ng-repeat="group in form.product.coverages">
+          <div class="card">
+            <div class="item item-divider">
+              {{group.name}}
+            </div>
+            <div class="item item-text-wrap">
+              {{group.desc}}
+            </div>
+            <div class="item">
+              <label class="item item-select">
+                <select ng-if="showLimit(group)" style="padding-top: 5px;" ng-change="limitChanged(group)" ng-options="g as ('Limit:' + g) for g in group.limitValues" ng-model="group.limit">
+                  <option value="">ignore this one</option>
+                </select>
+                <select ng-if="!showLimit(group)" style="padding-top: 5px;" ng-model="group.hasSelected">
+                  <option value="">ignore this one</option>                  
+                  <option value="true">select this one</option> 
+                </select>
+              </label>
+            </div>
+          </div>
+        </div>
+      </ion-list>
+      <div class="padding">
+        <a ng-click="next()" class="footer button button-block button-positive">
+          Next
+        </a>
+      </div>
+    </form>
+  </ion-content>
 </ion-view>

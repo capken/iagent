@@ -1,24 +1,24 @@
-<ion-view title="选择产品">
-	<ion-content has-header="true">
-		<form class="form-horizontal" role="form">
-			<ion-list>
-				<div ng-repeat="group in products.groups">
-					<div class="card">
-						<div class="item item-divider">
-							{{group.name}}
-						</div>
-						<div class="item item-text-wrap">
-							{{group.desc}}
-						</div>
-						<div class="item item-divider pull-right" ng-click="prodChanged(group)">
-							<a class="item-icon-right">
-								<i class="ion-arrow-right-c"></i>
-								点击购买此产品
-							</a>
-						</div>
-					</div>
-				</div>
-			</ion-list>
-		</form>
-	</ion-content>
+<ion-view title="Products">
+  <ion-content has-header="true">
+    <form class="form-horizontal" role="form">
+      <ion-list>
+        <div ng-repeat="group in products.groups">
+          <div class="card">
+            <div class="item item-divider">
+              {{group.name}}
+            </div>
+            <div class="item item-text-wrap">
+              {{group.desc}}
+            </div>
+            <div class="item item-divider pull-right" ng-click="prodChanged(group)">
+              <a class="item-icon-right">
+                <i class="ion-arrow-right-c"></i>
+                click to apply
+              </a>
+            </div>
+          </div>
+        </div>
+      </ion-list>
+    </form>
+  </ion-content>
 </ion-view>

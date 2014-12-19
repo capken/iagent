@@ -2,6 +2,7 @@ angular.module('iagent.controllers', ['iagent.services'])
 
 .controller('MainCtrl', function($scope, $stateParams) {
   $scope.form = {
+    product:{},
     values: {},
     action: {},
     reset: function() {
@@ -9,11 +10,7 @@ angular.module('iagent.controllers', ['iagent.services'])
       this.action = {};
     }
   };
-  $scope.prods = {
-  	selectProduct: {},
-  	selectedCoverage: {}
-  };
-  
+  // $scope.product = {};
 })
 
 .controller('HomeCtrl', function($scope, $stateParams) {
@@ -36,7 +33,7 @@ angular.module('iagent.controllers', ['iagent.services'])
 
   $scope.query = function() {
     $state.go('profile');
-  }
+  };
 })
 
 .controller('ProfileCtrl', function($scope, $ionicLoading, $timeout, Users) {
@@ -75,82 +72,105 @@ angular.module('iagent.controllers', ['iagent.services'])
   }
 })
 
-.controller('ProductsCtrl', function($scope, $state) {
-  $scope.products = {groups:[]};
-  
+.controller('ProductsCtrl', function ($scope, $state) {
+  $scope.products = {
+    groups: []
+  };
+
   $scope.prodChanged = function (prod) {
-  	if(prod){
-  		$scope.prods.selectProduct = prod;
-  		$state.go('coverage');
-  	}
+    if (prod) {
+      $scope.form.product = prod;
+      $state.go('coverage');
+    }
   };
-  
+
   $scope.products.groups[0] = {
-  	name: '车险',
-  	code: 'vehicle',
-  	desc:'车险描述'
-  };
-  $scope.products.groups[1] = {
-  	name: '寿险',
-  	code: 'life',
-  	desc: '寿险描述'
-  };
-  $scope.products.groups[2] = {
-  	name: '旅行意外险',
-  	code: 'travel',
-  	desc: '旅行意外险描述'
+    name: "Basic Private Motor Car",
+    id: "prod:1",
+    code: "BPMC",
+    desc: "This auto product is designed for private car owners with basic insurance expectations.",
+    coverages: [{
+      name: "Third Party Liability",
+      code: "VTPL",
+      desc: "Third Party Liability",
+      limitValues: [
+        50000,
+        1000000,
+        2000000,
+        3000000
+      ]
+    }, 
+    {
+      name: "Own Auto Damage",
+      code: "GOD",
+      desc: "Own Auto Damage",
+      limitValues: []
+    }, 
+    {
+      name: "Theft",
+      code: "RANDT",
+      desc: "Theft",
+      hasSelected: 'false',
+      limitValues: []
+    }, {
+      name: "Personal Accident to Driver",
+      code: "DPL",
+      desc: "Personal Accident to Driver",
+      limitValues: [
+        50000,
+        1000000,
+        2000000,
+        3000000
+      ]
+    }, 
+    {
+      name: "Window Breakage",
+      code: "GLASS",
+      desc: "Window Breakage",
+      limitValues: []
+    }, 
+    {
+      name: "Scrape",
+      code: "SCRAPE",
+      desc: "Scrape",
+      hasSelected: 'false',
+      limitValues: [
+        1000,
+        2000,
+        3000
+      ]
+    }, 
+    {
+      name: "Self-ignition",
+      code: "FIRE_IGN",
+      desc: "Self-ignition",
+      limitValues: []
+    }]
   };
 })
 
 .controller('CoverageCtrl', function ($scope, $state) {
-  $scope.coverage = {groups:[]};
-  
-  $scope.selectChanged = function (group) {
-    if (group) {
-    	$scope.prods.selectedCoverage[group.hasSelected.code] = group.hasSelected;
+
+  $scope.limitChanged = function (group) {
+    if (group && group.limit) {
+      group.hasSelected = 'true';
+    } else {
+      group.hasSelected = 'false';
     }
   };
-  
-  $scope.next = function () {
-  	var prodCover = $scope.prods;
+
+  $scope.showLimit = function (group) {
+    if (group && group.limitValues.length <= 0) {
+      return false;
+    }
+    return true;
   };
-  
-  if($scope.prods.selectProduct && $scope.prods.selectProduct.code === 'vehicle'){
-  	$scope.coverage.groups[0] = {
-	  	name: '机动车强制险',
-	  	code: 'OD_G',
-	  	desc: '机动车强制险描述',
-	    liability: [
-	    	{code:'OD_G',value:100000},
-	    	{code:'OD_G',value:20000}
-	    ]
-	  };
-	  $scope.coverage.groups[1] = {
-	  	name: '第三方责任险',
-	  	code: 'TPL_G',
-	  	desc: '第三方责任险描述',
-	  	liability: [
-	    	{code:'TPL_G',value:100000},
-	    	{code:'TPL_G',value:20000}
-	    ]
-	  };
-	  $scope.coverage.groups[2] = {
-	  	name: '自燃险',
-	  	code: 'FIRE_G',
-	  	desc: '自燃险描述',
-	  	liability: [
-	    	{code:'FIRE_G',value:100000},
-	    	{code:'FIRE_G',value:20000}
-	    ]
-	  };
-	  $scope.coverage.groups[3] = {
-	  	name: '盗抢险',
-	  	code: 'TH_G',
-	  	desc: '盗抢险描述',
-	  	liability: [
-	    	{code:'TH_G',value:100000},
-	    	{code:'TH_G',value:20000}
-	    ]
-	  };
-  }
+
+  $scope.next = function () {
+    $state.go('product_form');
+  };
+
+  // if ($scope.form.product) {
+  //   $scope.coverage.groups = $scope.form.product.coverages;
+  // }
 });
