@@ -5,6 +5,8 @@
 
 .profile-item span {
   float: right;
+  font-size: 90%;
+  font-weight: bold;
 }
 
 .profile-item .row, .profile-item .col{
@@ -44,5 +46,9 @@ p.uw-alert {
 .list .item.item-accordion.ng-hide-add,
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
+}
+
+p.currency {
+  font-weight: bold;
 }
 

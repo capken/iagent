@@ -53,5 +53,26 @@ angular.module('iagent.services', [])
   }
 })
 
-.factory('Quotation', function() {
+.factory('Quotation', function($http) {
+  return {
+    calc: function(data, callback) {
+      $http.get('data/quotation.json')
+      .success(function(response) {
+        var result = {};
+        if(response.underwriting.passed) {
+          result.passUnderwriting = true;
+          result.tax = response.calculation.TAX;
+          result.discount = response.calculation.DISC;
+          result.commission = response.calculation.COMM;
+          result.sgp = response.calculation.SGP;
+        } else {
+          result.passUnderwriting = false;
+        }
+
+        callback(result);
+      })
+      .error(function(response) {
+      });
+    }
+  }
 });

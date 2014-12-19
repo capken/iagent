@@ -50,7 +50,7 @@ angular.module('iagent.controllers', ['iagent.services'])
   });
 })
 
-.controller('ProductCtrl', function($scope, $state, $stateParams) {
+.controller('ProductCtrl', function($scope, $state, $stateParams, $ionicLoading, Users, Quotation) {
   if($state.is('product_form')) {
     $scope.title = 'Policy Form';
   
@@ -58,16 +58,41 @@ angular.module('iagent.controllers', ['iagent.services'])
  
     $scope.form.fields = [
       { label: 'Name', attr: 'name', type: 'text' },
-      { label: 'Cell Phone', attr: 'phone', type: 'text' },
+      { label: 'Cell Phone', attr: 'cellPhone', type: 'text' },
       { label: 'Email', attr: 'email', type: 'email' },
-      { label: 'License Plates', attr: 'plates', type: 'text' },
+      { label: 'License Plates', attr: 'licensePlates', type: 'text' },
       { label: 'Start Date', attr: 'sdate', type: 'date' }
     ];
+
+    $scope.form.values = {
+      name: 'Steven Huang',
+      cellPhone: '13912345678',
+      email: 'steven.huang@gmail.com',
+      licensePlates: '沪A6U615',
+      sdate: new Date()
+    };
  
     $scope.form.action.target = 'summary';
     $scope.form.action.label = 'Next';
  
   } else if($state.is('summary')) {
+    $ionicLoading.show({
+      template: 'Searching...'
+    });
+
+    // build up the request data
+    var data = {};
+
+    Users.get($scope.form.values, function(profile) {
+      $scope.user = profile;
+
+      Quotation.calc(data, function(result) {
+        console.log(JSON.stringify(result))
+        $scope.calcResult = result;
+      });
+
+      $ionicLoading.hide();
+    });
   }
 })
 

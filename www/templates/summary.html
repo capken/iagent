@@ -1,7 +1,7 @@
 <ion-view title="Summary">
 <ion-content>
 
-<div class="card">
+<div class="card" ng-show="calcResult && !calcResult.passUnderwriting">
   <div class="item item-divider">
     Underwriting Failure
   </div>
@@ -12,21 +12,21 @@
   </div>
 </div>
 
-<div class="card">
+<div class="card" ng-show="user">
   <div class="item item-divider">
     Policy Information
   </div>
   <div class="item profile-item">
     <label>Insured Person</label>
-    <span>Allen Zheng</span>
+    <span>{{user.name}}</span>
   </div>
   <div class="item profile-item">
     <label>Car Plate Number</label>
-    <span><strong>491VHJ</strong></span>
+    <span>{{user.licensePlates}}</span>
   </div>
   <div class="item profile-item">
     <label>Vehicle Purchase Price</label>
-    <span><strong>30,000</strong> <i class="icon ion-social-usd"></i></span>
+    <span>{{user.carPurchasePrice | currency:"$ ":0}}</span>
   </div>
   <div class="item profile-item">
     <label>Effective Date</label>
@@ -38,43 +38,62 @@
   </div>
 </div>
 
-<div class="card">
+<div class="card" ng-show="user">
   <div class="item item-divider">
-    Product: Basic Private Motor Car
+    Coverages of Basic Private Motor Car
   </div>
-  <div class="item item-text-wrap">
-    <p>This auto product is designed for private car owners with basic insurance expectations.</p>
-  </div>
+
   <div class="item profile-item">
-    <div class="row row-center">
-      <div class="col col-75">
-        <p>Third Party Liability</p>
-        <p class="limit">Limit: 200,000 <i class="icon ion-social-usd"></i></p>
-      </div>
-      <div class="col">
-        <span><strong>200</strong> <i class="icon ion-social-usd"></i></span>
-      </div>
-    </div>
+    <label>Third Party Liability</label>
+    <span>{{'1000000' | currency:"$ ":0}}</span>
   </div>
   <div class="item profile-item">
     <label>Own Auto Damage</label>
-    <span><strong>150</strong> <i class="icon ion-social-usd"></i></span>
+    <span>{{'20000' | currency:"$ ":0}}</span>
   </div>
   <div class="item profile-item">
     <label>Theft</label>
-    <span><strong>100</strong> <i class="icon ion-social-usd"></i></span>
+    <span></span>
   </div>
   <div class="item profile-item">
     <label>Personal Accident to Driver</label>
-    <span><strong>50</strong> <i class="icon ion-social-usd"></i></span>
-  </div>
-  <div class="item profile-item">
-    <label><strong>TOTAL</strong></label>
-    <span><strong>500</strong> <i class="icon ion-social-usd"></i></span>
+    <span>{{'5000' | currency:"$ ":0}}</span>
   </div>
 </div>
 
-<div class="padding">
+<div class="card" ng-show="calcResult">
+  <div class="item item-divider">
+    Quotation Result
+  </div>
+
+  <div class="item profile-item">
+    <div class="row row-center">
+
+      <div class="col text-center">
+        <p>Total</p>
+        <p class="currency">{{calcResult.sgp | currency:"$ ":2 }}</p>
+      </div>
+
+      <div class="col text-center">
+        <p>Tax</p>
+        <p class="currency">{{calcResult.tax | currency:"$ ":2}}</p>
+      </div>
+
+      <div class="col text-center">
+        <p>Discount</p>
+        <p class="currency">{{calcResult.discount | currency:"$ ":2}}</p>
+      </div>
+
+      <div class="col text-center">
+        <p>Commission</p>
+        <p class="currency">{{calcResult.commission | currency:"$ ":2}}</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="padding" ng-show="calcResult">
   <button class="button button-block button-positive">
     Proceed to checkout
   </button>
