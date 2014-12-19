@@ -24,12 +24,6 @@ angular.module('iagent', ['ionic', 'iagent.controllers'])
     templateUrl: "templates/home.html",
     controller: 'HomeCtrl'
   })
-  
-  .state('coverage', {
-    url: "/coverage",
-    templateUrl: "templates/coverage.html",
-    controller: 'CoverageCtrl'
-  })
 
   .state('search', {
     url: "/search",
@@ -42,11 +36,17 @@ angular.module('iagent', ['ionic', 'iagent.controllers'])
     templateUrl: "templates/profile.html",
     controller: 'ProfileCtrl'
   })
-
+  
   .state('products', {
     url: "/products",
     templateUrl: "templates/products.html",
     controller: 'ProductsCtrl'
+  })
+
+  .state('coverage', {
+    url: "/coverage",
+    templateUrl: "templates/coverage.html",
+    controller: 'CoverageCtrl'
   })
 
   .state('product_form', {
