@@ -2,7 +2,7 @@
   <ion-content has-header="true">
     <form class="form-horizontal" role="form">
       <ion-list>
-        <div ng-repeat="group in form.product.coverages">
+        <div ng-repeat="group in coverages.groups.coverages">
           <div class="card">
             <div class="item item-divider">
               {{group.name}}
@@ -12,7 +12,7 @@
             </div>
             <div class="item">
               <label class="item item-select">
-                <select ng-if="showLimit(group)" style="padding-top: 5px;" ng-change="limitChanged(group)" ng-options="g as ('Limit:' + g) for g in group.limitValues" ng-model="group.limit">
+                <select ng-if="showLimit(group)" style="padding-top: 5px;" ng-change="limitChanged(group)" ng-options="g as ('Limit:' + g) for g in group.limit.values" ng-model="group.limitValue">
                   <option value="">ignore this one</option>
                 </select>
                 <select ng-if="!showLimit(group)" style="padding-top: 5px;" ng-model="group.hasSelected">

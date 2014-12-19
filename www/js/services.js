@@ -50,7 +50,7 @@ angular.module('iagent.services', [])
         callBack(null);
       }, 1500);
     }
-  }
+  };
 })
 
 .factory('Quotation', function($http) {
@@ -74,5 +74,28 @@ angular.module('iagent.services', [])
       .error(function(response) {
       });
     }
-  }
+  };
+})
+
+.factory('ProcuctService', function($http) {
+  return {
+    get: function (callBack) {
+      $http.get('data/products.json').success(function (data) {
+        callBack(data);
+      });
+      return;
+    }
+  };
+})
+
+.factory('ProcuctCoveragesService', function($http) {
+  return {
+    get: function (productId, callBack) {
+      productId = productId.trim().replace(':', '_');
+      $http.get('data/'+productId+'.json').success(function (data) {
+        callBack(data);
+      });
+      return;
+    }
+  };
 });

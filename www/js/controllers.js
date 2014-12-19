@@ -50,7 +50,7 @@ angular.module('iagent.controllers', ['iagent.services'])
   });
 
   Users.get($scope.form.values, function(profile) {
-    $scope.userProfile = profile
+    $scope.userProfile = profile;
     if(profile == null) {
       $scope.userNotFound = true;
     }
@@ -104,87 +104,34 @@ angular.module('iagent.controllers', ['iagent.services'])
   }
 })
 
-.controller('ProductsCtrl', function ($scope, $state) {
-  $scope.products = {
-    groups: []
-  };
+.controller('ProductsCtrl', function ($scope, $state, ProcuctService) {
+  $scope.products = {};
+
+  ProcuctService.get(function (data){
+    if (data) {
+      $scope.products.groups = data;
+    }
+  });
 
   $scope.prodChanged = function (prod) {
     if (prod) {
-      $scope.form.product = prod;
+      $scope.form.product.id = prod.id;
       $state.go('coverage');
     }
   };
-
-  $scope.products.groups[0] = {
-    name: "Basic Private Motor Car",
-    id: "prod:1",
-    code: "BPMC",
-    desc: "This auto product is designed for private car owners with basic insurance expectations.",
-    coverages: [{
-      name: "Third Party Liability",
-      code: "VTPL",
-      desc: "Third Party Liability",
-      limitValues: [
-        50000,
-        1000000,
-        2000000,
-        3000000
-      ]
-    }, 
-    {
-      name: "Own Auto Damage",
-      code: "GOD",
-      desc: "Own Auto Damage",
-      limitValues: []
-    }, 
-    {
-      name: "Theft",
-      code: "RANDT",
-      desc: "Theft",
-      hasSelected: 'false',
-      limitValues: []
-    }, {
-      name: "Personal Accident to Driver",
-      code: "DPL",
-      desc: "Personal Accident to Driver",
-      limitValues: [
-        50000,
-        1000000,
-        2000000,
-        3000000
-      ]
-    }, 
-    {
-      name: "Window Breakage",
-      code: "GLASS",
-      desc: "Window Breakage",
-      limitValues: []
-    }, 
-    {
-      name: "Scrape",
-      code: "SCRAPE",
-      desc: "Scrape",
-      hasSelected: 'false',
-      limitValues: [
-        1000,
-        2000,
-        3000
-      ]
-    }, 
-    {
-      name: "Self-ignition",
-      code: "FIRE_IGN",
-      desc: "Self-ignition",
-      limitValues: []
-    }]
-  };
 })
 
-.controller('CoverageCtrl', function ($scope, $state) {
+.controller('CoverageCtrl', function ($scope, $state, ProcuctCoveragesService) {
+  $scope.coverages = {};
+
+  ProcuctCoveragesService.get($scope.form.product.id, function (data) {
+    if (data) {
+      $scope.coverages.groups = data;
+    }
+  });
 
   $scope.limitChanged = function (group) {
-    if (group && group.limit) {
+    if (group && group.limitValue) {
       group.hasSelected = 'true';
     } else {
       group.hasSelected = 'false';
@@ -192,17 +139,29 @@ angular.module('iagent.controllers', ['iagent.services'])
   };
 
   $scope.showLimit = function (group) {
-    if (group && group.limitValues.length <= 0) {
-      return false;
+    if (group && group.limit && group.limit.values.length > 0) {
+      return true;
     }
-    return true;
+    return false;
   };
 
   $scope.next = function () {
+    $scope.form.product.coverages = [];
+    angular.forEach($scope.coverages.groups.coverages, function(value, key) {
+      var limitCode = '';
+      if (value) {
+        if(value.limit){
+          limitCode = value.limit.code;
+        }
+        var coverage = {
+          "uuid":  value.uuid,
+          "selected": value.hasSelected,
+          "limitValue": value.limitValue,
+          "limitCode": limitCode
+        };
+        this.push(coverage);
+      }
+    }, $scope.form.product.coverages);
     $state.go('product_form');
   };
-
-  // if ($scope.form.product) {
-  //   $scope.coverage.groups = $scope.form.product.coverages;
-  // }
 });
