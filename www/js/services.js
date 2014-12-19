@@ -51,4 +51,7 @@ angular.module('iagent.services', [])
       }, 1500);
     }
   }
+})
+
+.factory('Quotation', function() {
 });

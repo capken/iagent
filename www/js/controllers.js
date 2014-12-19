@@ -68,7 +68,6 @@ angular.module('iagent.controllers', ['iagent.services'])
     $scope.form.action.label = 'Next';
  
   } else if($state.is('summary')) {
-  
   }
 })
 

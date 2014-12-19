@@ -1,0 +1,46 @@
+{
+  "calculation": {
+    "exceptions": "",
+    "TAX": 0,
+    "DISC": 0,
+    "APP": 877.50,
+    "COMM": 87.75,
+    "SNP": 877.50,
+    "SGP": 877.50,
+    "FEE": 0
+  },
+  "insuredObjects": [
+    {
+      "calculation": {
+        "exceptions": "",
+        "TAX": 0,
+        "DISC": 0,
+        "APP": 877.50,
+        "COMM": 87.75,
+        "SNP": 877.50,
+        "SGP": 877.50,
+        "FEE": 0
+      },
+      "validationrule": {
+        "passed": true
+      },
+      "underwriting": {
+        "passed": true
+      },
+      "type": "quotation",
+      "success": true,
+      "ruleCheckResult": "PASS",
+      "quotationStatus": "QUOTATION_IN_PROGRESS"
+    }
+  ],
+  "validationrule": {
+    "passed": true
+  },
+  "underwriting": {
+    "passed": true
+  },
+  "type": "quotation",
+  "success": true,
+  "ruleCheckResult": "PASS",
+  "quotationStatus": "QUOTATION_IN_PROGRESS"
+}
