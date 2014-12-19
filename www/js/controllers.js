@@ -23,10 +23,18 @@ angular.module('iagent.controllers', ['iagent.services'])
 
   $scope.form.fields = [
     { label: 'Name', attr: 'name', type: 'text' },
-    { label: 'Cell Phone', attr: 'phone', type: 'text' },
+    { label: 'Cell Phone', attr: 'cellPhone', type: 'text' },
     { label: 'Email', attr: 'email', type: 'email' },
-    { label: 'License Plates', attr: 'plates', type: 'text' }
+    { label: 'License Plates', attr: 'licensePlates', type: 'text' }
   ];
+
+  $scope.form.values = {
+    name: 'Melanie Wang',
+    cellPhone: '13956712348',
+    email: 'melanie.wang@outlook.com',
+    licensePlates: '沪D83278',
+    sdate: new Date()
+  };
 
   $scope.form.action.target = 'profile';
   $scope.form.action.icon = 'ion-search';

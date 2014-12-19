@@ -19,9 +19,9 @@ angular.module('iagent.services', [])
       avatar: '1.png'
     },
     { 
-      name: 'Melanie Qiu',
+      name: 'Melanie Wang',
       cellPhone: '13956712348',
-      email: 'melanie.qiu@outlook.com',
+      email: 'melanie.wang@outlook.com',
       licensePlates: '沪D83278',
       gender: 'female',
       occupation: 'Product Manager',
