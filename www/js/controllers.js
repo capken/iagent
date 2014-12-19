@@ -36,18 +36,18 @@ angular.module('iagent.controllers', ['iagent.services'])
   };
 })
 
-.controller('ProfileCtrl', function($scope, $ionicLoading, $timeout, Users) {
+.controller('ProfileCtrl', function($scope, $ionicLoading, Users) {
   $ionicLoading.show({
     template: 'Searching...'
   });
 
-  $timeout(function() {
-    $scope.userProfile = Users.get($scope.form.values.name);
-    if($scope.userProfile === null) {
+  Users.get($scope.form.values, function(profile) {
+    $scope.userProfile = profile
+    if(profile == null) {
       $scope.userNotFound = true;
     }
     $ionicLoading.hide();
-  }, 1500);
+  });
 })
 
 .controller('ProductCtrl', function($scope, $state, $stateParams) {

@@ -2,28 +2,36 @@ angular.module('iagent.services', [])
 
 .factory('Users', function() {
 
-  // Some fake testing data
   var users = [
     { 
-      name: 'Allen Zheng',
+      name: 'Steven Huang',
       cellPhone: '13912345678',
-      email: 'allen.zheng@ebaotech.com',
+      email: 'steven.huang@gmail.com',
       licensePlates: '沪A6U615',
-      avatar: 'allen.jpeg'
+      gender: 'male',
+      occupation: 'Software Engineer',
+      location: 'Shanghai',
+      age: 33,
+      carPurchasePrice: 20000,
+      drivingExperience: 3.5,
+      avgDailyMileage: 22.5,
+      trafficViolations: 2,
+      avatar: '1.png'
     },
     { 
-      name: 'Steve Jobs',
-      cellPhone: '18900816498',
-      email: 'steven@apple.com',
-      licensePlates: '沪A66666',
-      avatar: 'steve.jpeg'
-    },
-    { 
-      name: 'Tim Cooks',
-      cellPhone: '18600816398',
-      email: 'tim@apple.com',
-      licensePlates: '沪A88888',
-      avatar: 'tim.jpeg'
+      name: 'Melanie Qiu',
+      cellPhone: '13956712348',
+      email: 'melanie.qiu@outlook.com',
+      licensePlates: '沪D83278',
+      gender: 'female',
+      occupation: 'Product Manager',
+      location: 'Beijing',
+      age: 28,
+      carPurchasePrice: 35000,
+      drivingExperience: 2,
+      avgDailyMileage: 15.0,
+      trafficViolations: 0,
+      avatar: '2.png'
     }
   ];
 
@@ -31,14 +39,16 @@ angular.module('iagent.services', [])
     all: function() {
       return users;
     },
-    get: function(userName) {
-      for(var i = 0; i < users.length; i++) {
-        if(userName === users[i].name) {
-          return users[i];
-        }
-      } 
-
-      return null;
+    get: function(user, callBack) {
+      setTimeout(function() {
+        for(var i = 0; i < users.length; i++) {
+          if(user.email === users[i].email) {
+            callBack(users[i]);
+            return;
+          }
+        } 
+        callBack(null);
+      }, 1500);
     }
   }
 });

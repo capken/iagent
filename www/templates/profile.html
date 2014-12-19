@@ -2,30 +2,30 @@
   <ion-content>
     <div class="list card" ng-show="userProfile">
       <div class="item text-center">
-        <img id="avatar" ng-src="img/allen.jpeg">
-        <div id="name"><i class="icon ion-male"></i> Allen Zheng</div>
-        <div id="occupation">Software Engineer</div>
-        <div id="location"><i class="icon ion-location"></i> Shanghai</div>
+        <img id="avatar" ng-src="img/{{userProfile.avatar}}">
+        <div id="name"><i class="icon ion-{{userProfile.gender}}"></i> {{userProfile.name}}</div>
+        <div id="occupation">{{userProfile.occupation}}</div>
+        <div id="location"><i class="icon ion-location"></i> {{userProfile.location}}</div>
       </div>
       <div class="item profile-item">
         <label>Age</label>
-        <span><strong>33</strong></span>
+        <span><strong>{{userProfile.age}}</strong></span>
       </div>
       <div class="item profile-item">
         <label>Car Purchase Price</label>
-        <span><strong>145,000</strong> yuan</span>
+        <span><strong>{{userProfile.carPurchasePrice | currency:"USD$ ":0}}</strong></span>
       </div>
       <div class="item profile-item">
         <label>Driving Experience</label>
-        <span><strong>3</strong> years</span>
+        <span><strong>{{userProfile.drivingExperience}} years</strong></span>
       </div>
       <div class="item profile-item">
         <label>Avg. Daily Mileage</label>
-        <span><strong>20</strong> km</span>
+        <span><strong>{{userProfile.avgDailyMileage}} km</strong></span>
       </div>
       <div class="item profile-item">
         <label>Traffic Violations (2014)</label>
-        <span><strong>2</strong> times</span>
+        <span><strong>{{userProfile.trafficViolations}} times</strong></span>
       </div>
     </div>
     <div class="list card" ng-show="userNotFound">
