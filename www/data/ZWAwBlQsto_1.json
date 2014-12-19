@@ -1,0 +1,75 @@
+{
+  "name": "Basic Private Motor Car",
+  "id": "ZWAwBlQsto:1",
+  "code": "BPMC",
+  "desc": "This auto product is designed for private car owners with basic insurance expectations.",
+  "coverages": [
+  {
+    "name": "Third Party Liability",
+    "code": "VTPL",
+    "uuid": "295d2bbb-0934-47d1-8b06-b36ee9bf2276",
+    "desc": "Third Party Liability",
+    "limit": {
+      "code": "AOA_limitAmount_VTPL",
+      "values": [
+        50000,
+        100000,
+        200000,
+        300000
+      ]
+    }
+  }, 
+  {
+    "name": "Own Auto Damage",
+    "code": "GOD",
+    "uuid": "d051b4d5-3c41-472d-9b79-5339da5086f4",
+    "desc": "Own Auto Damage"
+  }, 
+  {
+    "name": "Theft",
+    "code": "RANDT",
+    "uuid": "cf3b4ee7-eff9-46ca-8c53-1912b1c7f1c9",
+    "desc": "Theft"
+  }, 
+  {
+    "name": "Personal Accident to Driver",
+    "code": "DPL",
+    "uuid": "256e0164-75c3-4c59-b504-fb97a4f606e9",
+    "desc": "Personal Accident to Driver",
+    "limit": {
+      "code": "AOA_limitAmount_DPL",
+      "values": [
+        50000,
+        100000,
+        200000,
+        300000
+      ]
+    }
+  }, 
+  {
+    "name": "Window Breakage",
+    "code": "GLASS",
+    "uuid": "7d982558-02a9-42f5-8112-fa3877e3d867",
+    "desc": "Window Breakage"
+  }, 
+  {
+    "name": "Scrape",
+    "code": "SCRAPE",
+    "uuid": "376a3bde-a95d-43d8-af3c-5ebdf30bc974",
+    "desc": "Scrape",
+    "limit": {
+      "code": "AOA_limitAmount_SCRAPE",
+      "values": [
+        1000,
+        2000,
+        3000
+      ]
+    }
+  }, 
+  {
+    "name": "Self-ignition",
+    "code": "FIRE_IGN",
+    "uuid": "692d8fcc-389f-40a4-9c03-1b2ed2d52e01",
+    "desc": "Self-ignition"
+  }]
+}
