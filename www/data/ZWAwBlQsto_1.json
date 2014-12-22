@@ -8,9 +8,12 @@
     "name": "Third Party Liability",
     "code": "VTPL",
     "uuid": "295d2bbb-0934-47d1-8b06-b36ee9bf2276",
-    "desc": "Third Party Liability",
+    "desc": "Necessary and reasonable reimbursement for bodily injury or death of third party in a car accident.",
+    "selected": true,
+    "mandatory": true,
     "limit": {
       "code": "AOA_limitAmount_VTPL",
+      "value": 50000,
       "values": [
         50000,
         100000,
@@ -23,21 +26,24 @@
     "name": "Own Auto Damage",
     "code": "GOD",
     "uuid": "d051b4d5-3c41-472d-9b79-5339da5086f4",
-    "desc": "Own Auto Damage"
+    "desc": "The cost of physical loss or damage to insured vehicle and its accessories.",
+    "selected": true,
+    "mandatory": true
   }, 
   {
     "name": "Theft",
     "code": "RANDT",
     "uuid": "cf3b4ee7-eff9-46ca-8c53-1912b1c7f1c9",
-    "desc": "Theft"
+    "desc": "Cover the risks of vehicle or its parts being stolen."
   }, 
   {
     "name": "Personal Accident to Driver",
     "code": "DPL",
     "uuid": "256e0164-75c3-4c59-b504-fb97a4f606e9",
-    "desc": "Personal Accident to Driver",
+    "desc": "Necessary and reasonable reimbursement for bodily injury or death of driver in the insured vehicle.",
     "limit": {
       "code": "AOA_limitAmount_DPL",
+      "value": 50000,
       "values": [
         50000,
         100000,
@@ -50,15 +56,16 @@
     "name": "Window Breakage",
     "code": "GLASS",
     "uuid": "7d982558-02a9-42f5-8112-fa3877e3d867",
-    "desc": "Window Breakage"
+    "desc": "The compensation for unexpected breaks of the car windows."
   }, 
   {
     "name": "Scrape",
     "code": "SCRAPE",
     "uuid": "376a3bde-a95d-43d8-af3c-5ebdf30bc974",
-    "desc": "Scrape",
+    "desc": "The repairs to insured vehicle from the small shallow cuts.",
     "limit": {
       "code": "AOA_limitAmount_SCRAPE",
+      "value": 1000,
       "values": [
         1000,
         2000,
@@ -70,6 +77,6 @@
     "name": "Self-ignition",
     "code": "FIRE_IGN",
     "uuid": "692d8fcc-389f-40a4-9c03-1b2ed2d52e01",
-    "desc": "Self-ignition"
+    "desc": "Cover the risks of natural heating or spontaneous combustion."
   }]
 }

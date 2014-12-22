@@ -58,8 +58,43 @@ angular.module('iagent.controllers', ['iagent.services'])
   });
 })
 
-.controller('ProductCtrl', function($scope, $state, $stateParams, $ionicLoading, Users, Quotation) {
-  if($state.is('product_form')) {
+.controller('ProductsCtrl', function ($scope, $ionicLoading, Products) {
+  $ionicLoading.show({
+    template: 'Searching...'
+  });
+
+  Products.all(function(products){
+    $scope.products = products;
+    $ionicLoading.hide();
+  });
+})
+
+.controller('ProductCtrl', function($scope, $state, $stateParams, $ionicLoading, Products, Users, Quotation) {
+  if($state.is('coverages')) {
+    $scope.selectCoverages = function() {
+      $scope.form.product = {
+        name: $scope.product.name,
+        id: $scope.product.id,
+        coverages: []
+      };
+
+      angular.forEach($scope.product.coverages,
+        function(coverage, index) {
+        }
+      );
+      $state.go('product_form');
+    };
+
+    $ionicLoading.show({
+      template: 'Searching...'
+    });
+
+    var productId = $stateParams.id.replace(':', '_');
+    Products.get(productId, function(product){
+      $scope.product = product;
+      $ionicLoading.hide();
+    });
+  } else if($state.is('product_form')) {
     $scope.title = 'Policy Form';
   
     $scope.form.reset();
@@ -85,7 +120,7 @@ angular.module('iagent.controllers', ['iagent.services'])
  
   } else if($state.is('summary')) {
     $ionicLoading.show({
-      template: 'Searching...'
+      template: 'Loading...'
     });
 
     // build up the request data
@@ -104,22 +139,6 @@ angular.module('iagent.controllers', ['iagent.services'])
   }
 })
 
-.controller('ProductsCtrl', function ($scope, $state, ProcuctService) {
-  $scope.products = {};
-
-  ProcuctService.get(function (data){
-    if (data) {
-      $scope.products.groups = data;
-    }
-  });
-
-  $scope.prodChanged = function (prod) {
-    if (prod) {
-      $scope.form.product.id = prod.id;
-      $state.go('coverage');
-    }
-  };
-})
 
 .controller('CoverageCtrl', function ($scope, $state, ProcuctCoveragesService) {
   $scope.coverages = {};

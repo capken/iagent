@@ -39,15 +39,15 @@ angular.module('iagent.services', [])
     all: function() {
       return users;
     },
-    get: function(user, callBack) {
+    get: function(user, callback) {
       setTimeout(function() {
         for(var i = 0; i < users.length; i++) {
           if(user.email === users[i].email) {
-            callBack(users[i]);
+            callback(users[i]);
             return;
           }
         } 
-        callBack(null);
+        callback(null);
       }, 1500);
     }
   };
@@ -77,25 +77,24 @@ angular.module('iagent.services', [])
   };
 })
 
-.factory('ProcuctService', function($http) {
+.factory('Products', function($http) {
   return {
-    get: function (callBack) {
-      $http.get('data/products.json').success(function (data) {
-        callBack(data);
+    all: function (callback) {
+      $http.get('data/products.json')
+      .success(function (response) {
+        callback(response);
+      })
+      .error(function(response) {
       });
-      return;
-    }
-  };
-})
-
-.factory('ProcuctCoveragesService', function($http) {
-  return {
-    get: function (productId, callBack) {
-      productId = productId.trim().replace(':', '_');
-      $http.get('data/'+productId+'.json').success(function (data) {
-        callBack(data);
+    },
+    get: function(id, callback) {
+      var productUrl = 'data/' + id + '.json';
+      $http.get(productUrl)
+      .success(function(response) {
+        callback(response);
+      })
+      .error(function(response) {
       });
-      return;
     }
   };
 });

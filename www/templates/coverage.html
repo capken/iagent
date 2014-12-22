@@ -1,34 +1,37 @@
-<ion-view title="{{form.product.name}}">
+<ion-view title="{{product.name}}">
   <ion-content has-header="true">
-    <form class="form-horizontal" role="form">
-      <ion-list>
-        <div ng-repeat="group in coverages.groups.coverages">
-          <div class="card">
-            <div class="item item-divider">
-              {{group.name}}
-            </div>
-            <div class="item item-text-wrap">
-              {{group.desc}}
-            </div>
-            <div class="item">
-              <label class="item item-select">
-                <select ng-if="showLimit(group)" style="padding-top: 5px;" ng-change="limitChanged(group)" ng-options="g as ('Limit:' + g) for g in group.limit.values" ng-model="group.limitValue">
-                  <option value="">ignore this one</option>
-                </select>
-                <select ng-if="!showLimit(group)" style="padding-top: 5px;" ng-model="group.hasSelected">
-                  <option value="">ignore this one</option>                  
-                  <option value="true">select this one</option> 
-                </select>
-              </label>
-            </div>
-          </div>
-        </div>
-      </ion-list>
-      <div class="padding">
-        <a ng-click="next()" class="footer button button-block button-positive">
-          Next
-        </a>
+
+    <div class="card" ng-repeat="coverage in product.coverages">
+      <div class="item item-divider">
+        {{coverage.name}}
       </div>
-    </form>
+      <div class="item item-text-wrap">
+        {{coverage.desc}}
+      </div>
+
+      <div class="item item-toggle">
+        Select this one
+        <label class="toggle toggle-possitive">
+          <input type="checkbox" ng-disabled="coverage.mandatory" ng-model="coverage.selected">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+
+      <div class="item item-input item-select" ng-show="coverage.selected && coverage.limit">
+        <div class="input-label">
+          Limit
+        </div>
+        <select ng-model="coverage.limit.value" 
+          ng-options="limitValue as limitValue | currency:'$':0 for limitValue in coverage.limit.values"></select>
+      </div>
+
+    </div>
+
+    <div class="padding">
+      <a ng-click="selectCoverages()" class="button button-block button-positive">Next</a>
+    </div>
+
   </ion-content>
 </ion-view>
