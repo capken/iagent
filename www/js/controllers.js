@@ -98,7 +98,7 @@ angular.module('iagent.controllers', ['iagent.services'])
         }
       );
 
-      $state.go('product_form', {id: $scope.form.product.id});
+      $state.go('summary', {id: $stateParams.id});
     };
 
     $ionicLoading.show({
@@ -130,7 +130,7 @@ angular.module('iagent.controllers', ['iagent.services'])
       sdate: new Date()
     };
  
-    $scope.form.action.target = 'summary({id: "' + $stateParams.id + '"})';
+    $scope.form.action.target = 'coverages({id: "' + $stateParams.id + '"})';
     $scope.form.action.label = 'Next';
  
   } else if($state.is('summary')) {
@@ -138,13 +138,11 @@ angular.module('iagent.controllers', ['iagent.services'])
       template: 'Loading...'
     });
 
-    console.log(JSON.stringify($scope.form));
-
-    // build up the request data
-    var data = {};
-
     Users.get($scope.form.values, function(profile) {
       $scope.user = profile;
+
+      var data = Quotation.buildRequest($scope.form.product, $scope.user);
+      console.log(JSON.stringify(data));
 
       Quotation.calc(data, function(result) {
         console.log(JSON.stringify(result))

@@ -45,12 +45,12 @@ angular.module('iagent', ['ionic', 'iagent.controllers'])
 
   .state('coverages', {
     url: "/products/:id/coverages",
-    templateUrl: "templates/coverage.html",
+    templateUrl: "templates/coverages.html",
     controller: 'ProductCtrl'
   })
 
   .state('product_form', {
-    url: "/products/:id/form",
+    url: "/products/:id/user",
     templateUrl: "templates/form.html",
     controller: 'ProductCtrl'
   })

@@ -15,6 +15,7 @@ angular.module('iagent.services', [])
       carPurchasePrice: 20000,
       drivingExperience: 3.5,
       avgDailyMileage: 22.5,
+      ageOfCar: 3,
       trafficViolations: 2,
       avatar: '1.png'
     },
@@ -30,6 +31,7 @@ angular.module('iagent.services', [])
       carPurchasePrice: 35000,
       drivingExperience: 2,
       avgDailyMileage: 15.0,
+      ageOfCar: 8,
       trafficViolations: 0,
       avatar: '2.png'
     }
@@ -57,45 +59,45 @@ angular.module('iagent.services', [])
   return {
     buildRequest: function(product, user) {
       var factors = {
-
+        effectiveDate: "2015-01-01T00:00:00.000Z",
+        expiredDate: "2015-12-31T00:00:00.000Z",
+        $isOpen: true,
+        DV003: "1988-07-02T16:00:00.000Z",
+        DV008: user.drivingExperience,
+        VE001: user.avgDailyMileage * 365,
+        VE011: user.ageOfCar,
+        VE023: user.carPurchasePrice
       };
-      //var data = {
-      //  mode: "policy",
-      //  insuredObjects: [
-      //    {
-      //      name: "Vehicle #0",
-      //      product_id: product.id,
-      //      channel_id: 80001,
-      //      factor_table: {
-      //        effectiveDate: "2014-12-19T03:27:56.229Z",
-      //        expiredDate: "2015-12-18T03:27:56.229Z",
-      //        $isOpen: true,
-      //        DV003: "1988-07-02T16:00:00.000Z",
-      //        DV008: 3,
-      //        VE001: 18000,
-      //        VE011: 2,
-      //        VE023: 30000,
-      //        AOA_limitAmount_VTPL: 50000,
-      //        AOA_limitAmount_DPL: 50000,
-      //        AOA_limitAmount_SCRAPE: 1000
-      //      },
-      //      selection: {
-      //        "89b77fc1-24c4-4679-bc94-9d7be630e358": true,
-      //        "295d2bbb-0934-47d1-8b06-b36ee9bf2276": true,
-      //        "d051b4d5-3c41-472d-9b79-5339da5086f4": true,
-      //        "cf3b4ee7-eff9-46ca-8c53-1912b1c7f1c9": true,
-      //        "256e0164-75c3-4c59-b504-fb97a4f606e9": true,
-      //        "7d982558-02a9-42f5-8112-fa3877e3d867": true,
-      //        "376a3bde-a95d-43d8-af3c-5ebdf30bc974": true,
-      //        "692d8fcc-389f-40a4-9c03-1b2ed2d52e01": true
-      //      },
-      //      campaign_ids: []
-      //    }
-      //  ]
-      //};
+
+      var selection = {};
+      angular.forEach(product.coverages,
+        function(coverage, index){
+          selection[coverage.uuid] = coverage.selected;
+          if(coverage.selected && angular.isDefined(coverage.limit)) {
+            factors[coverage.limit.code] = coverage.limit.value;
+          }
+        }
+      );
+
+      return {
+        mode: "policy",
+        insuredObjects: [
+          {
+            name: "Vehicle #0",
+            product_id: product.id,
+            channel_id: 80001,
+            factor_table: factors,
+            selection: selection,
+            campaign_ids: []
+          }
+        ]
+      };
     },
     calc: function(data, callback) {
-      $http.get('data/quotation.json')
+      //key=QWdlbmN5MTpBZ2VuY3kx
+      var serviceURL = 'http://172.25.12.38:8080/pa_web_dev/api/quotation?key=QWdlbmN5MTpBZ2VuY3kx';
+      //$http.get('data/quotation.json')
+      $http.post(serviceURL, data)
       .success(function(response) {
         var result = {};
         if(response.underwriting.passed) {
@@ -111,6 +113,7 @@ angular.module('iagent.services', [])
         callback(result);
       })
       .error(function(response) {
+        console.log(response);
       });
     }
   };
