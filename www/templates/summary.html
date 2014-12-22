@@ -26,7 +26,7 @@
   </div>
   <div class="item profile-item">
     <label>Vehicle Purchase Price</label>
-    <span>{{user.carPurchasePrice | currency:"$ ":0}}</span>
+    <span>{{user.carPurchasePrice | currency:"$":0}}</span>
   </div>
   <div class="item profile-item">
     <label>Effective Date</label>
@@ -40,24 +40,12 @@
 
 <div class="card" ng-show="user">
   <div class="item item-divider">
-    Coverages of Basic Private Motor Car
+    Coverages of {{form.product.name}} 
   </div>
 
-  <div class="item profile-item">
-    <label>Third Party Liability</label>
-    <span>{{'1000000' | currency:"$ ":0}}</span>
-  </div>
-  <div class="item profile-item">
-    <label>Own Auto Damage</label>
-    <span>{{'20000' | currency:"$ ":0}}</span>
-  </div>
-  <div class="item profile-item">
-    <label>Theft</label>
-    <span></span>
-  </div>
-  <div class="item profile-item">
-    <label>Personal Accident to Driver</label>
-    <span>{{'5000' | currency:"$ ":0}}</span>
+  <div class="item profile-item" ng-repeat="coverage in form.product.coverages | filter: {selected: true}">
+    <label>{{coverage.name}}</label>
+    <span ng-show="coverage.limit">{{coverage.limit.value | currency:"$":0}}</span>
   </div>
 </div>
 
@@ -71,22 +59,22 @@
 
       <div class="col text-center">
         <p>Total</p>
-        <p class="currency">{{calcResult.sgp | currency:"$ ":2 }}</p>
+        <p class="currency">{{calcResult.sgp | currency:"$":2 }}</p>
       </div>
 
       <div class="col text-center">
         <p>Tax</p>
-        <p class="currency">{{calcResult.tax | currency:"$ ":2}}</p>
+        <p class="currency">{{calcResult.tax | currency:"$":2}}</p>
       </div>
 
       <div class="col text-center">
         <p>Discount</p>
-        <p class="currency">{{calcResult.discount | currency:"$ ":2}}</p>
+        <p class="currency">{{calcResult.discount | currency:"$":2}}</p>
       </div>
 
       <div class="col text-center">
         <p>Commission</p>
-        <p class="currency">{{calcResult.commission | currency:"$ ":2}}</p>
+        <p class="currency">{{calcResult.commission | currency:"$":2}}</p>
       </div>
 
     </div>

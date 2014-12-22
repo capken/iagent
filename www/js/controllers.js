@@ -60,7 +60,7 @@ angular.module('iagent.controllers', ['iagent.services'])
 
 .controller('ProductsCtrl', function ($scope, $ionicLoading, Products) {
   $ionicLoading.show({
-    template: 'Searching...'
+    template: 'Loading...'
   });
 
   Products.all(function(products){
@@ -71,6 +71,7 @@ angular.module('iagent.controllers', ['iagent.services'])
 
 .controller('ProductCtrl', function($scope, $state, $stateParams, $ionicLoading, Products, Users, Quotation) {
   if($state.is('coverages')) {
+
     $scope.selectCoverages = function() {
       $scope.form.product = {
         name: $scope.product.name,
@@ -80,13 +81,28 @@ angular.module('iagent.controllers', ['iagent.services'])
 
       angular.forEach($scope.product.coverages,
         function(coverage, index) {
+          var cov = {
+            name: coverage.name,
+            uuid: coverage.uuid,
+            selected: coverage.selected,
+          };
+
+          if(angular.isDefined(coverage.limit)) {
+            cov.limit = {
+              code: coverage.limit.code,
+              value: coverage.limit.value
+            };
+          }
+
+          $scope.form.product.coverages.push(cov);
         }
       );
-      $state.go('product_form');
+
+      $state.go('product_form', {id: $scope.form.product.id});
     };
 
     $ionicLoading.show({
-      template: 'Searching...'
+      template: 'Loading...'
     });
 
     var productId = $stateParams.id.replace(':', '_');
@@ -94,10 +110,9 @@ angular.module('iagent.controllers', ['iagent.services'])
       $scope.product = product;
       $ionicLoading.hide();
     });
+
   } else if($state.is('product_form')) {
     $scope.title = 'Policy Form';
-  
-    $scope.form.reset();
  
     $scope.form.fields = [
       { label: 'Name', attr: 'name', type: 'text' },
@@ -115,13 +130,15 @@ angular.module('iagent.controllers', ['iagent.services'])
       sdate: new Date()
     };
  
-    $scope.form.action.target = 'summary';
+    $scope.form.action.target = 'summary({id: "' + $stateParams.id + '"})';
     $scope.form.action.label = 'Next';
  
   } else if($state.is('summary')) {
     $ionicLoading.show({
       template: 'Loading...'
     });
+
+    console.log(JSON.stringify($scope.form));
 
     // build up the request data
     var data = {};
@@ -137,50 +154,4 @@ angular.module('iagent.controllers', ['iagent.services'])
       $ionicLoading.hide();
     });
   }
-})
-
-
-.controller('CoverageCtrl', function ($scope, $state, ProcuctCoveragesService) {
-  $scope.coverages = {};
-
-  ProcuctCoveragesService.get($scope.form.product.id, function (data) {
-    if (data) {
-      $scope.coverages.groups = data;
-    }
-  });
-
-  $scope.limitChanged = function (group) {
-    if (group && group.limitValue) {
-      group.hasSelected = 'true';
-    } else {
-      group.hasSelected = 'false';
-    }
-  };
-
-  $scope.showLimit = function (group) {
-    if (group && group.limit && group.limit.values.length > 0) {
-      return true;
-    }
-    return false;
-  };
-
-  $scope.next = function () {
-    $scope.form.product.coverages = [];
-    angular.forEach($scope.coverages.groups.coverages, function(value, key) {
-      var limitCode = '';
-      if (value) {
-        if(value.limit){
-          limitCode = value.limit.code;
-        }
-        var coverage = {
-          "uuid":  value.uuid,
-          "selected": value.hasSelected,
-          "limitValue": value.limitValue,
-          "limitCode": limitCode
-        };
-        this.push(coverage);
-      }
-    }, $scope.form.product.coverages);
-    $state.go('product_form');
-  };
 });

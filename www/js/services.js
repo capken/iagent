@@ -55,6 +55,45 @@ angular.module('iagent.services', [])
 
 .factory('Quotation', function($http) {
   return {
+    buildRequest: function(product, user) {
+      var factors = {
+
+      };
+      //var data = {
+      //  mode: "policy",
+      //  insuredObjects: [
+      //    {
+      //      name: "Vehicle #0",
+      //      product_id: product.id,
+      //      channel_id: 80001,
+      //      factor_table: {
+      //        effectiveDate: "2014-12-19T03:27:56.229Z",
+      //        expiredDate: "2015-12-18T03:27:56.229Z",
+      //        $isOpen: true,
+      //        DV003: "1988-07-02T16:00:00.000Z",
+      //        DV008: 3,
+      //        VE001: 18000,
+      //        VE011: 2,
+      //        VE023: 30000,
+      //        AOA_limitAmount_VTPL: 50000,
+      //        AOA_limitAmount_DPL: 50000,
+      //        AOA_limitAmount_SCRAPE: 1000
+      //      },
+      //      selection: {
+      //        "89b77fc1-24c4-4679-bc94-9d7be630e358": true,
+      //        "295d2bbb-0934-47d1-8b06-b36ee9bf2276": true,
+      //        "d051b4d5-3c41-472d-9b79-5339da5086f4": true,
+      //        "cf3b4ee7-eff9-46ca-8c53-1912b1c7f1c9": true,
+      //        "256e0164-75c3-4c59-b504-fb97a4f606e9": true,
+      //        "7d982558-02a9-42f5-8112-fa3877e3d867": true,
+      //        "376a3bde-a95d-43d8-af3c-5ebdf30bc974": true,
+      //        "692d8fcc-389f-40a4-9c03-1b2ed2d52e01": true
+      //      },
+      //      campaign_ids: []
+      //    }
+      //  ]
+      //};
+    },
     calc: function(data, callback) {
       $http.get('data/quotation.json')
       .success(function(response) {
@@ -79,22 +118,22 @@ angular.module('iagent.services', [])
 
 .factory('Products', function($http) {
   return {
-    all: function (callback) {
-      $http.get('data/products.json')
-      .success(function (response) {
-        callback(response);
-      })
-      .error(function(response) {
-      });
+    all: function(callback) {
+      setTimeout(function() {
+        $http.get('data/products.json')
+        .success(function(response) {
+          callback(response);
+        });
+      }, 1200);
     },
     get: function(id, callback) {
       var productUrl = 'data/' + id + '.json';
-      $http.get(productUrl)
-      .success(function(response) {
-        callback(response);
-      })
-      .error(function(response) {
-      });
+      setTimeout(function() {
+        $http.get(productUrl)
+        .success(function(response) {
+          callback(response);
+        })
+      }, 900);
     }
   };
 });

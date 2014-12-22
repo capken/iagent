@@ -34,13 +34,17 @@
     "name": "Theft",
     "code": "RANDT",
     "uuid": "cf3b4ee7-eff9-46ca-8c53-1912b1c7f1c9",
-    "desc": "Cover the risks of vehicle or its parts being stolen."
+    "desc": "Cover the risks of vehicle or its parts being stolen.",
+    "selected": false,
+    "mandatory": false
   }, 
   {
     "name": "Personal Accident to Driver",
     "code": "DPL",
     "uuid": "256e0164-75c3-4c59-b504-fb97a4f606e9",
     "desc": "Necessary and reasonable reimbursement for bodily injury or death of driver in the insured vehicle.",
+    "selected": false,
+    "mandatory": false,
     "limit": {
       "code": "AOA_limitAmount_DPL",
       "value": 50000,
@@ -56,13 +60,17 @@
     "name": "Window Breakage",
     "code": "GLASS",
     "uuid": "7d982558-02a9-42f5-8112-fa3877e3d867",
-    "desc": "The compensation for unexpected breaks of the car windows."
+    "desc": "The compensation for unexpected breaks of the car windows.",
+    "selected": false,
+    "mandatory": false
   }, 
   {
     "name": "Scrape",
     "code": "SCRAPE",
     "uuid": "376a3bde-a95d-43d8-af3c-5ebdf30bc974",
     "desc": "The repairs to insured vehicle from the small shallow cuts.",
+    "selected": false,
+    "mandatory": false,
     "limit": {
       "code": "AOA_limitAmount_SCRAPE",
       "value": 1000,
@@ -77,6 +85,8 @@
     "name": "Self-ignition",
     "code": "FIRE_IGN",
     "uuid": "692d8fcc-389f-40a4-9c03-1b2ed2d52e01",
-    "desc": "Cover the risks of natural heating or spontaneous combustion."
+    "desc": "Cover the risks of natural heating or spontaneous combustion.",
+    "selected": false,
+    "mandatory": false
   }]
 }
