@@ -7,8 +7,9 @@
   </div>
   <div class="item item-text-wrap">
     <p>You are not allowed to buy this product with the following reasons:</p>
-    <p class="uw-alert"><i class="icon ion-alert-circled"></i> Insured person's age should be less than 60</p>
-    <p class="uw-alert"><i class="icon ion-alert-circled"></i> Age of vehicle should be less than 10 years</p>
+    <p class="uw-alert" ng-repeat="msg in calcResult.failureMessages">
+      <i class="icon ion-alert-circled"></i> {{msg}}
+    </p>
   </div>
 </div>
 
@@ -49,7 +50,7 @@
   </div>
 </div>
 
-<div class="card" ng-show="calcResult">
+<div class="card" ng-show="calcResult.passUnderwriting">
   <div class="item item-divider">
     Quotation Result
   </div>
@@ -81,7 +82,7 @@
   </div>
 </div>
 
-<div class="padding" ng-show="calcResult">
+<div class="padding" ng-show="calcResult.passUnderwriting">
   <button class="button button-block button-positive">
     Proceed to checkout
   </button>

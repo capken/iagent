@@ -2,21 +2,16 @@
   <ion-content has-header="true" ng-show="product">
 
     <div class="card" ng-repeat="coverage in product.coverages">
-      <div class="item item-divider">
+
+      <div class="item item-checkbox ">
+        <label class="checkbox">
+          <input type="checkbox" ng-disabled="coverage.mandatory" ng-model="coverage.selected">
+        </label>
         {{coverage.name}}
       </div>
+
       <div class="item item-text-wrap">
         {{coverage.desc}}
-      </div>
-
-      <div class="item item-toggle">
-        Select this one
-        <label class="toggle toggle-possitive">
-          <input type="checkbox" ng-disabled="coverage.mandatory" ng-model="coverage.selected">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
-        </label>
       </div>
 
       <div class="item item-input item-select" ng-show="coverage.selected && coverage.limit">

@@ -96,11 +96,14 @@ angular.module('iagent.services', [])
     calc: function(data, callback) {
       //key=QWdlbmN5MTpBZ2VuY3kx
       var serviceURL = 'http://172.25.12.38:8080/pa_web_dev/api/quotation?key=QWdlbmN5MTpBZ2VuY3kx';
-      //$http.get('data/quotation.json')
-      $http.post(serviceURL, data)
+      //$http.get('data/uw.json')
+      $http.get('data/quotation.json')
+      //$http.post(serviceURL, data)
       .success(function(response) {
+        console.log(response);
         var result = {};
-        if(response.underwriting.passed) {
+        if(response.insuredObjects.length > 0 &&
+          response.insuredObjects[0].underwriting.passed) {
           result.passUnderwriting = true;
           result.tax = response.calculation.TAX;
           result.discount = response.calculation.DISC;
@@ -108,6 +111,7 @@ angular.module('iagent.services', [])
           result.sgp = response.calculation.SGP;
         } else {
           result.passUnderwriting = false;
+          result.failureMessages = response.insuredObjects[0].underwriting.messages.split(';');
         }
 
         callback(result);

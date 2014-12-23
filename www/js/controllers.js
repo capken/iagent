@@ -10,6 +10,26 @@ angular.module('iagent.controllers', ['iagent.services'])
       this.action = {};
     }
   };
+
+  $scope.changeUser = function() {
+    if($scope.form.values.email === 'melanie.wang@outlook.com') {
+      $scope.form.values = {
+        name: 'Steven Huang',
+        cellPhone: '13912345678',
+        email: 'steven.huang@gmail.com',
+        licensePlates: '沪A6U615',
+        sdate: new Date()
+      };
+    } else {
+      $scope.form.values = {
+        name: 'Melanie Wang',
+        cellPhone: '13956712348',
+        email: 'melanie.wang@outlook.com',
+        licensePlates: '沪D83278',
+        sdate: new Date()
+      };
+    }
+  }
   // $scope.product = {};
 })
 
