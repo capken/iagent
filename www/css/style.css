@@ -52,3 +52,7 @@ p.currency {
   font-weight: bold;
 }
 
+body{
+  font-family: 'Arial','Microsoft Yahei';
+  color:#666;
+}
