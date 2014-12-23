@@ -1,5 +1,92 @@
 /* Empty. Add your own CSS if you like */
 
+body{
+  font-family: 'Arial','Microsoft Yahei';
+  color:#666;
+  font-size: 16px;
+}
+.bar.bar-stable{
+  background: #508fcc;
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(26,122,198,1)), color-stop(100%,rgba(26,95,150,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(26,122,198,1) 0%,rgba(26,95,150,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: linear-gradient(to right,  rgba(26,122,198,1) 0%,rgba(26,95,150,1) 100%); /* W3C */
+  color:#fff;
+}
+.bar.bar-stable .title {
+  color:#fff;
+}
+.bar-stable .button.button-clear{
+  color:#fff;
+  font-size: 1em;
+}
+.back-button i:before{
+  font-size: 1.5em !important;
+}
+.buttons-right button:before{
+  font-size: 1.5em !important;
+  color:#fff;
+}
+.input-label{
+  font-size: 1em;
+  color:#999;
+}
+.item input{
+  font-size: 1.2em;
+  color:#666;
+}
+.button.button-positive {
+  background: #ffb709;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,197,11,1)), color-stop(100%,rgba(255,169,7,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(255,197,11,1) 0%,rgba(255,169,7,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: linear-gradient(to bottom,  rgba(255,197,11,1) 0%,rgba(255,169,7,1) 100%); /* W3C */
+  border:none;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-shadow:0 1px 0 rgba(0,0,0,0.3);
+}
+.card{
+  margin:15px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+.item-divider{
+  font-weight: bold;
+  color:#1c69b0;
+  background: #f9f9f9;
+}
+a.temp_buy{
+  background: #ffb709;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,197,11,1)), color-stop(100%,rgba(255,169,7,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(255,197,11,1) 0%,rgba(255,169,7,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: linear-gradient(to bottom,  rgba(255,197,11,1) 0%,rgba(255,169,7,1) 100%); /* W3C */
+  color:#fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow:0 1px 0 rgba(0,0,0,0.3);
+}
+.item-checkbox{
+  font-weight: bold;
+  color:#1c69b0;
+  background: #f9f9f9;
+}
+input[type="checkbox"]{
+  
+}
+.checkbox input:before{
+  border:2px solid #1c69b0;
+}
+.checkbox input:checked:before{
+  background: #1c69b0;
+  border:none;
+}
+.checkbox input:disabled:checked:before{
+  background: rgba(28,105,176,0.5);
+  border:2px solid rgba(28,105,176,0.3);
+}
+
+
+
+
 .profile-item label {
 }
 
@@ -52,7 +139,3 @@ p.currency {
   font-weight: bold;
 }
 
-body{
-  font-family: 'Arial','Microsoft Yahei';
-  color:#666;
-}
