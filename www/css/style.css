@@ -83,7 +83,9 @@ input[type="checkbox"]{
   background: rgba(28,105,176,0.5);
   border:2px solid rgba(28,105,176,0.3);
 }
-
+.user_header{
+  padding: 0;
+}
 
 
 
@@ -92,7 +94,7 @@ input[type="checkbox"]{
 
 .profile-item span {
   float: right;
-  font-size: 90%;
+  font-size: 1em;
   font-weight: bold;
 }
 
@@ -110,15 +112,24 @@ p.uw-alert {
 }
 
 #name {
-  font-weight: bold
+  font-weight: bold;
+  text-align: right;
+  margin-bottom: 10px;
 }
 
 #occupation, #location {
-  font-size: 12px;
+  font-size: 0.8em;
+  text-align: right;
+  margin-bottom: 10px;
+}
+#location{
+  margin-bottom: 0;
 }
 
 #avatar {
-  border-radius: 5px;
+  border-radius: 4px;
+  width: 100%;
+  box-shadow: 0 0px 0px 0 rgba(0,0,0,0.2)
 }
 
 .list .item.item-accordion {

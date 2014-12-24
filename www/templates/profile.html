@@ -2,11 +2,23 @@
   <ion-content>
     <div class="list card" ng-show="userProfile">
       <div class="item text-center">
-        <img id="avatar" ng-src="img/{{userProfile.avatar}}">
-        <div id="name"><i class="icon ion-{{userProfile.gender}}"></i> {{userProfile.name}}</div>
-        <div id="occupation">{{userProfile.occupation}}</div>
-        <div id="location"><i class="icon ion-location"></i> {{userProfile.location}}</div>
+        <div class="row user_header">
+          <div class="col-33"><img id="avatar" ng-src="img/{{userProfile.avatar}}"></div>
+          <div class="col" style="">
+            <div id="name">
+              <i class="icon ion-{{userProfile.gender}}"></i> {{userProfile.name}}
+            </div>
+            <div id="occupation">{{userProfile.occupation}}</div>
+            <div id="location">
+              <i class="icon ion-location"></i> {{userProfile.location}}
+            </div>
+          </div>
+
+        </div>
       </div>
+
+        
+        
       <div class="item profile-item">
         <label>Age</label>
         <span><strong>{{userProfile.age}}</strong></span>

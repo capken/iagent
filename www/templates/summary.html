@@ -54,31 +54,21 @@
   <div class="item item-divider">
     Quotation Result
   </div>
-
   <div class="item profile-item">
-    <div class="row row-center">
-
-      <div class="col text-center">
-        <p>Total</p>
-        <p class="currency">{{calcResult.sgp | currency:"$":2 }}</p>
-      </div>
-
-      <div class="col text-center">
-        <p>Tax</p>
-        <p class="currency">{{calcResult.tax | currency:"$":2}}</p>
-      </div>
-
-      <div class="col text-center">
-        <p>Discount</p>
-        <p class="currency">{{calcResult.discount | currency:"$":2}}</p>
-      </div>
-
-      <div class="col text-center">
-        <p>Commission</p>
-        <p class="currency">{{calcResult.commission | currency:"$":2}}</p>
-      </div>
-
-    </div>
+      <label>Tax</label>
+      <span>{{calcResult.tax | currency:"$":2}}</span>
+  </div>
+  <div class="item profile-item">
+      <label>Discount</label>
+      <span>{{calcResult.discount | currency:"$":2}}</span>
+  </div>
+  <div class="item profile-item">
+      <label>Commission</label>
+      <span>{{calcResult.commission | currency:"$":2}}</span>
+  </div>
+  <div class="item profile-item">
+      <label>Total</label>
+      <span>{{calcResult.sgp | currency:"$":2 }}</span>
   </div>
 </div>
 
