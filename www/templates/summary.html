@@ -22,12 +22,20 @@
     <span>{{user.name}}</span>
   </div>
   <div class="item profile-item">
-    <label>Car Plate Number</label>
+    <label>Driving Experience</label>
+    <span><strong>{{user.drivingExperience}} years</strong></span>
+  </div>
+  <div class="item profile-item">
+    <label>Vehicle Plate Number</label>
     <span>{{user.licensePlates}}</span>
   </div>
   <div class="item profile-item">
     <label>Vehicle Purchase Price</label>
     <span>{{user.carPurchasePrice | currency:"$":0}}</span>
+  </div>
+  <div class="item profile-item">
+    <label>Vehicle Age</label>
+    <span><strong>{{user.ageOfCar}} years</strong></span>
   </div>
   <div class="item profile-item">
     <label>Effective Date</label>
@@ -41,7 +49,7 @@
 
 <div class="card" ng-show="user">
   <div class="item item-divider">
-    Coverages of {{form.product.name}} 
+    Coverages 
   </div>
 
   <div class="item profile-item" ng-repeat="coverage in form.product.coverages | filter: {selected: true}">

@@ -13,23 +13,24 @@
               <i class="icon ion-location"></i> {{userProfile.location}}
             </div>
           </div>
-
         </div>
       </div>
-
-        
         
       <div class="item profile-item">
         <label>Age</label>
         <span><strong>{{userProfile.age}}</strong></span>
       </div>
       <div class="item profile-item">
-        <label>Car Purchase Price</label>
-        <span><strong>{{userProfile.carPurchasePrice | currency:"$ ":0}}</strong></span>
-      </div>
-      <div class="item profile-item">
         <label>Driving Experience</label>
         <span><strong>{{userProfile.drivingExperience}} years</strong></span>
+      </div>
+      <div class="item profile-item">
+        <label>Vehicle Purchase Price</label>
+        <span><strong>{{userProfile.carPurchasePrice | currency:"$":0}}</strong></span>
+      </div>
+      <div class="item profile-item">
+        <label>Vehicle Age</label>
+        <span><strong>{{userProfile.ageOfCar}} years</strong></span>
       </div>
       <div class="item profile-item">
         <label>Avg. Daily Mileage</label>

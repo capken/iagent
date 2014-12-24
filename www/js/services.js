@@ -15,7 +15,7 @@ angular.module('iagent.services', [])
       carPurchasePrice: 20000,
       drivingExperience: 3.5,
       avgDailyMileage: 22.5,
-      ageOfCar: 3,
+      ageOfCar: 12,
       trafficViolations: 2,
       avatar: '1.png'
     },
@@ -23,7 +23,7 @@ angular.module('iagent.services', [])
       name: 'Melanie Wang',
       cellPhone: '13956712348',
       email: 'melanie.wang@outlook.com',
-      licensePlates: '沪D83278',
+      licensePlates: '京D83278',
       gender: 'female',
       occupation: 'Product Manager',
       location: 'Beijing',
@@ -97,8 +97,8 @@ angular.module('iagent.services', [])
       //key=QWdlbmN5MTpBZ2VuY3kx
       var serviceURL = 'http://172.25.12.38:8080/pa_web_dev/api/quotation?key=QWdlbmN5MTpBZ2VuY3kx';
       //$http.get('data/uw.json')
-      $http.get('data/quotation.json')
-      //$http.post(serviceURL, data)
+      //$http.get('data/quotation.json')
+      $http.post(serviceURL, data)
       .success(function(response) {
         console.log(response);
         var result = {};

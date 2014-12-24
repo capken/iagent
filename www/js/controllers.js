@@ -45,7 +45,7 @@ angular.module('iagent.controllers', ['iagent.services'])
     { label: 'Name', attr: 'name', type: 'text' },
     { label: 'Cell Phone', attr: 'cellPhone', type: 'text' },
     { label: 'Email', attr: 'email', type: 'email' },
-    { label: 'License Plates', attr: 'licensePlates', type: 'text' }
+    { label: 'Vehicle Plate Number', attr: 'licensePlates', type: 'text' }
   ];
 
   $scope.form.values = {
@@ -138,7 +138,7 @@ angular.module('iagent.controllers', ['iagent.services'])
       { label: 'Name', attr: 'name', type: 'text' },
       { label: 'Cell Phone', attr: 'cellPhone', type: 'text' },
       { label: 'Email', attr: 'email', type: 'email' },
-      { label: 'License Plates', attr: 'licensePlates', type: 'text' },
+      { label: 'Vehicle Plate Number', attr: 'licensePlates', type: 'text' },
       { label: 'Start Date', attr: 'sdate', type: 'date' }
     ];
 
