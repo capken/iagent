@@ -1,4 +1,4 @@
-angular.module('iagent', ['ionic', 'iagent.controllers'])
+angular.module('iagent', ['ionic', 'ngCordova', 'iagent.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

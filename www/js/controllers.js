@@ -36,7 +36,7 @@ angular.module('iagent.controllers', ['iagent.services'])
 .controller('HomeCtrl', function($scope, $stateParams) {
 })
 
-.controller('SearchCtrl', function($scope, $state) {
+.controller('SearchCtrl', function($scope, $state, $cordovaBarcodeScanner) {
   $scope.title = 'Search Form';
 
   $scope.form.reset();
@@ -48,19 +48,38 @@ angular.module('iagent.controllers', ['iagent.services'])
     { label: 'Vehicle Plate Number', attr: 'licensePlates', type: 'text' }
   ];
 
-  $scope.form.values = {
-    name: 'Melanie Wang',
-    cellPhone: '13956712348',
-    email: 'melanie.wang@outlook.com',
-    licensePlates: '沪D83278',
-    sdate: new Date()
-  };
+  //$scope.form.values = {
+  //  name: 'Melanie Wang',
+  //  cellPhone: '13956712348',
+  //  email: 'melanie.wang@outlook.com',
+  //  licensePlates: '沪D83278',
+  //};
 
   $scope.form.action.target = 'profile';
   $scope.form.action.icon = 'ion-search';
 
   $scope.query = function() {
     $state.go('profile');
+  };
+
+  $scope.scan = function() {
+    $cordovaBarcodeScanner
+    .scan()
+    .then(function(barcodeData) {
+      try {
+        var user = JSON.parse(barcodeData.text);
+        $scope.form.values = {
+          name: user.name,
+          cellPhone: user.tel,
+          email: user.email,
+          licensePlates: user.plates
+        };
+      } catch(e) {
+        console.log('Error parsing barcode:' + barcodeData);
+      }
+    }, function(error) {
+      console.log(error);
+    });
   };
 })
 
